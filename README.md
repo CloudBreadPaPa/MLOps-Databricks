@@ -106,7 +106,9 @@ pip install -U databricks-cli
 Using the Databricks CLI, you can now create your own section (scope) for your secrets...
 
 ``` bash
-databricks secrets create-scope --scope azureml
+# databricks secrets create-scope --scope azureml  # error: Premium Tier is disabled in this workspace. Secret scopes can only be created with initial_manage_principal "users"
+# https://social.msdn.microsoft.com/Forums/officeocs/en-US/3783dba6-0e3c-48c7-8c72-4e275a215d57/solved-databricks-create-secret-scopes
+databricks secrets create-scope --scope azureml --initial-manage-principal "users"
 ```
 
 ... and add the required secrets to the scope.
