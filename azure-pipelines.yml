@@ -54,10 +54,10 @@ stages:
         script: |
           # We need to write the pipe the conf into databricks configure --token since
           # that command only takes inputs from stdin. 
-          conf=`cat << EOM
+          conf=`cat << EOF
           $(databricks.host)
           $(databricks.token)
-          EOM`
+          EOF`
           
           # For password auth there are three lines expected
           # hostname, username, password
