@@ -53,6 +53,7 @@ This token must be stored as encrypted secret in your Azure DevOps Build Pipelin
 ![Adding an Azure Pipeline Variable](./images/01AddingPipelineVariables.png "Adding an Azure Pipeline Variable")
 
 > NOTE: The variable must be called *databricks.token*
+> Also, add *databricks.host* variable to set databricks host. Host name was had-codeded in pipeline code as *https://westeurope.azuredatabricks.net* and it has changed to *https://adb-XXXXXXXXXXXX.azuredatabricks.net/* pattern.
 
 ![Azure Pipeline Variables](./images/02AddingPipelineVariables.png)
 
@@ -121,6 +122,8 @@ databricks secrets put --scope azureml --key client_secret
 databricks secrets put --scope azureml --key subscription_id
 databricks secrets put --scope azureml --key resource_group
 databricks secrets put --scope azureml --key workspace_name
+# Also, add "workspace_location" secret to databricks. In deploy code, it was hard-coded *workspace_location = "westeurope"* and changed to using variable. In Korea, use "koreacentral" or same location of databricks workspace.
+databricks secrets put --scope azureml --key workspace_location
 ```
 
 ## OPTIONAL: Pre-Approval Checks (Azure DevOps)
